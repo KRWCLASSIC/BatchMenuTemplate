@@ -120,7 +120,7 @@ echo Downloading neccessary files...
 echo.
 rem Downloading entire repo
 curl -LJO https://github.com/(RepoAuthor)/(Repo)/archive/master.zip
-"7zEmbeded.exe" x -y OpenModpackEngine-master.zip
+"7zEmbeded.exe" x -y (Repo)-master.zip
 cls
 rem Continuing with the installation
 goto src-extract
@@ -128,7 +128,7 @@ goto src-extract
 rem Moving out "src" folder out of the "temp" folder and removing unnecessary "temp" folder
 :src-extract
 cd ..
-move /y "temp/OpenModpackEngine-master/src" .
+move /y "temp/(Repo)/src" .
 rd /s /q temp
 cls
 rem Restarting installer to make sure "src" folder is being detected, yes, you could just go back to the src-handler but why? lol
