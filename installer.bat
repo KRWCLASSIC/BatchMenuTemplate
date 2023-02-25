@@ -1,6 +1,6 @@
 @echo off
 title Main Menu
-rem "chcp 65001" allows to use non ASCII characters (used for OptiPack logo below)
+rem "chcp 65001" allows to use non ASCII characters
 chcp 65001
 rem If you want to change filename you also need to change it here:
 set "BasicBatchMenuFilename=installer.bat"
