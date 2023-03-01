@@ -20,7 +20,7 @@ if exist "src" (
   goto temphandler
 ) else (
   rem Downloading "src" folder from project github, this folder includes modules for this to work (By going to src-handler)
-  goto 7zipins
+  goto dl-src
 )
 cls
 
@@ -99,10 +99,9 @@ cd src/somefolder
 call somefile5.bat
 exit
 
-rem Installing 7-Zip from GitHub
-:7zipins
-title Downloading OME files...
-mkdir temp
+:dl-src
+title Downloading (Your app name) files...
+mkdir temp & rem Installing 7-Zip from GitHub
 cd temp
 cls
 echo Downloading embeded 7-Zip...
@@ -110,28 +109,17 @@ echo.
 rem Downloading 7zip to unzip files from github
 rem If you dont want to add 7z to your files you can use this link: https://github.com/KRWCLASSIC/OpenModpackEngine/raw/master/src/misc/7zEmbeded.exe
 curl -LJOS https://github.com/(RepoAuthor)/(Repo)/raw/master/src/(misc)/7zEmbeded.exe
-cls
-goto src-handler-7zipconfirmed
-
-rem Creating temp folder outside of the "src" folder (because it isnt exists yet) and downloading into it OptiPack github repo
-:src-handler-7zipconfirmed
-cls
+cls & rem Creating temp folder outside of the "src" folder (because it isnt exists yet) and downloading into it OME github repo
 echo Downloading neccessary files...
 echo.
 rem Downloading entire repo
 curl -LJO https://github.com/(RepoAuthor)/(Repo)/archive/master.zip
 "7zEmbeded.exe" x -y (Repo)-master.zip
 cls
-rem Continuing with the installation
-goto src-extract
-
-rem Moving out "src" folder out of the "temp" folder and removing unnecessary "temp" folder
-:src-extract
-cd ..
+cd .. & rem Moving out "src" folder out of the "temp" folder and removing unnecessary "temp" folder
 move /y "temp/(Repo)/src" .
 rd /s /q temp
-cls
-rem Restarting installer to make sure "src" folder is being detected, yes, you could just go back to the src-handler but why? lol
+cls & rem Restarting installer to make sure "src" folder is being detected, yes, you could just go back to the src-existance-checker but why? lol
 goto r
 
 rem Restart installer procedure
